@@ -4,7 +4,6 @@ class CreateRecipes < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :description
       t.float :rating
-      t.string :comment
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
