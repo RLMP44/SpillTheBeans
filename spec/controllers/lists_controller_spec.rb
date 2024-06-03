@@ -1,6 +1,6 @@
 require 'rails_helper'
 begin
-  require "lists_controller"
+  require "./spec/controllers/bookmarks_controller.rb"
 rescue LoadError
 end
 
