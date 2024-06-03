@@ -10,10 +10,10 @@ rachael = User.create!(email: 'rach@me.com', password: '123456')
 puts 'User created'
 
 puts 'Creating recipes and lists...'
-cake = Recipe.create!(title: 'Chocolate cake', overview: 'A rich chocolate cake', rating: 8.5)
+cake = Recipe.create!(name: 'Chocolate cake', description: 'A rich chocolate cake', rating: 8.5)
 desserts = List.create!(title: 'Desserts')
 Bookmark.create!(recipe: cake, list: desserts)
-pesto = Recipe.create!(title: 'Pesto Bowl', overview: 'Yummmmm', rating: 9)
+pesto = Recipe.create!(name: 'Pesto Bowl', description: 'Yummmmm', rating: 9)
 dinners = List.create!(title: 'Dinners')
 Bookmark.create!(recipe: pesto, list: dinners)
 puts 'Done.'
