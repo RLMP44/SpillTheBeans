@@ -1,7 +1,7 @@
 puts 'Destroying users, lists, recipes, and bookmarks...'
-List.destroy_all
-Recipe.destroy_all
 Bookmark.destroy_all
+Recipe.destroy_all
+List.destroy_all
 User.destroy_all
 puts 'Done'
 
