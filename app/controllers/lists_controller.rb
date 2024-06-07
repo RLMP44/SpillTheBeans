@@ -3,11 +3,12 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-    @bookmark = Bookmark.new
+    @list = List.new
   end
 
   def show
     @bookmarks = @list.bookmarks.all
+    @bookmark = Bookmark.new
   end
 
   def create
@@ -21,7 +22,11 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
+    if @list.destroy
+      redirect_to lists_path
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   private

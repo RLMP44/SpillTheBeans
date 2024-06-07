@@ -3,3 +3,6 @@
 <% @bookmarks.each do |bookmark| %>
   <%= bookmark.recipe.name %>
 <% end %>
+<%= link_to "Delete", list_path(@list),
+data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+class:"btn btn-outline-danger btn-sm pt-3" %>
