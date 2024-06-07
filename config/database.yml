@@ -21,7 +21,8 @@ default: &default
 
 development:
   <<: *default
-  database: the_great_db_development
+  database: recipe_master_development
+  # database: the_great_db_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -79,6 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: the_great_db_production
-  username: the_great_db
-  password: <%= ENV["THE_GREAT_DB_DATABASE_PASSWORD"] %>
+  database: recipe_master_production
+  username: recipe_master
+  password: <%= ENV["RECIPE_MASTER_DATABASE_PASSWORD"] %>
+  # database: the_great_db_production
+  # username: the_great_db
+  # password: <%= ENV["THE_GREAT_DB_DATABASE_PASSWORD"] %>
