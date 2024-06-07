@@ -10,7 +10,7 @@ rachael = User.create!(email: 'rach@me.com', password: '123456')
 puts 'User created'
 
 puts 'Creating recipes and lists...'
-cake = Recipe.create!(user_id: rachael.id, name: 'Chocolate cake', description: 'A rich chocolate cake', rating: 8.5)
+cake = Recipe.create!(rec_lis_user_id: rachael.id, name: 'Chocolate cake', description: 'A rich chocolate cake', rating: 8.5)
 puts 'cake'
 desserts = List.create!(title: 'Desserts', user_id: rachael.id, comment: 'Really good list')
 puts 'desserts'
