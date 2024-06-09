@@ -1,6 +1,6 @@
 <h1>Lists Index</h1>
 <% @lists.each do |list| %>
-  <%= list.title %>
+  <%= link_to list.title, list_path(list), class:"btn btn-primary btn-sm pt-3" %>
 <% end %>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

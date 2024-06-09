@@ -1,8 +1,8 @@
-<h1>List Show Page</h1>
-<%= @list.title %>
+<h1><%= @list.title %></h1>
 <% @bookmarks.each do |bookmark| %>
   <%= bookmark.recipe.name %>
 <% end %>
 <%= link_to "Delete", list_path(@list),
 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
 class:"btn btn-outline-danger btn-sm pt-3" %>
+<%= link_to "Back", lists_path, class:"btn btn-primary btn-sm pt-3" %>
