@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks, only: :destroy
+  resources :recipes, only: %i[index show create destroy]
 end
