@@ -9,4 +9,11 @@ class Recipe < ApplicationRecord
   # def user_id
   #   rec_lis_user_id
   # end
+
+  private
+
+  def get_username
+    user = User.find(self.user_id)
+    user.email
+  end
 end

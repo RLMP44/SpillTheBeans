@@ -1,0 +1,14 @@
+<% @recipes.each do |recipe| %>
+  <% user = User.find(recipe.user_id) %>
+  <p>Recipe by: <%= user.email %></p>
+  <p>Recipe: <%= recipe.name %></p>
+  <p>Description: <%= recipe.description %></p>
+  <p>Oven?: <%= recipe.oven ? 'Yes' : 'No' %></p>
+  <p><%= recipe.rating %>★</p>
+  <p><%= recipe.cook_time %> minutes</p>
+  <p><%= recipe.difficulty %>/10 difficulty</p>
+  <p><%= recipe.total_time %> minutes</p>
+  <p>Total time: <%= recipe.oven_temp %></p>
+  <p>Ingredients: <%= recipe.ingredients %></p>
+  <p>Instructions: <%= recipe.instructions %></p>
+<% end %>
