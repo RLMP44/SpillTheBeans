@@ -1,6 +1,5 @@
 <% @recipes.each do |recipe| %>
-  <% user = User.find(recipe.user_id) %>
-  <p>Recipe by: <%= user.email %></p>
+  <p>Recipe by: <%= recipe.get_username %></p>
   <p>Recipe: <%= recipe.name %></p>
   <p>Description: <%= recipe.description %></p>
   <p>Oven?: <%= recipe.oven ? 'Yes' : 'No' %></p>

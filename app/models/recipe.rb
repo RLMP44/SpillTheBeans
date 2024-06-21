@@ -12,8 +12,8 @@ class Recipe < ApplicationRecord
 
   private
 
-  def get_username
-    user = User.find(self.user_id)
+  def get_username(recipe)
+    user = User.find(recipe.user_id)
     user.email
   end
 end

@@ -1,39 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe "recipe", type: :model do
+  let(:rach) do
+    User.create!(email: 'rach@me.com', password: '123456')
+  end
+
   let(:valid_attributes) do
     {
-      title: "Titanic",
-      overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.",
-      poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+      name: "Titanic",
+      description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.",
+      # poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
       rating: 7.9
     }
   end
 
-  it "has a title and an overview" do
-    recipe = Recipe.new(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
-    expect(recipe.title).to eq("Titanic")
-    expect(recipe.overview).to eq("101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+  it "has a name and an description" do
+    recipe = Recipe.new(name: "Titanic", description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+    expect(recipe.name).to eq("Titanic")
+    expect(recipe.description).to eq("101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
   end
 
-  it "title is unique" do
-    Recipe.create!(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
-    recipe = Recipe.new(title: "Titanic")
+  it "name is unique" do
+    Recipe.create!(name: "Titanic", description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+    recipe = Recipe.new(name: "Titanic")
     expect(recipe).not_to be_valid
   end
 
-  it "title cannot be blank" do
+  it "name cannot be blank" do
     attributes = valid_attributes
-    attributes.delete(:title)
+    attributes.delete(:name)
     recipe = Recipe.new(attributes)
     expect(recipe).not_to be_valid
   end
 
-  it "overview cannot be blank" do
+  it "description cannot be blank" do
     attributes = valid_attributes
-    attributes.delete(:overview)
+    attributes.delete(:description)
     recipe = Recipe.new(attributes)
     expect(recipe).not_to be_valid
+  end
+
+  it "belongs to a user" do
+    recipe = Recipe.new(user: rach, name: "Food", comment: "wowowow")
+    expect(recipe.user).to eq(rach)
   end
 
   it "has many bookmarks" do
