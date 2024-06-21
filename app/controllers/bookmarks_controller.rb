@@ -13,6 +13,11 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
+    if @bookmark.destroy
+      redirect_to lists_path
+    else
+      render 'lists/show', status: :unprocessable_entity
+    end
   end
 
   private

@@ -6,3 +6,26 @@
 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
 class:"btn btn-outline-danger btn-sm pt-3" %>
 <%= link_to "Back", lists_path, class:"btn btn-primary btn-sm pt-3" %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new list</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.association :recipe %>
+          <%#= f.input :photo, as: :file %>
+          <%= f.input :comment %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary floating" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  +
+</button>
