@@ -10,10 +10,13 @@ class Recipe < ApplicationRecord
   #   rec_lis_user_id
   # end
 
+  def get_username
+    username
+  end
+
   private
 
-  def get_username(recipe)
-    user = User.find(recipe.user_id)
+  def username
     user.email
   end
 end

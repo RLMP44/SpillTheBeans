@@ -1,13 +1,37 @@
 <% @recipes.each do |recipe| %>
-  <p>Recipe by: <%= recipe.get_username %></p>
-  <p>Recipe: <%= recipe.name %></p>
-  <p>Description: <%= recipe.description %></p>
-  <p>Oven?: <%= recipe.oven ? 'Yes' : 'No' %></p>
-  <p><%= recipe.rating %>★</p>
-  <p><%= recipe.cook_time %> minutes</p>
-  <p><%= recipe.difficulty %>/10 difficulty</p>
-  <p><%= recipe.total_time %> minutes</p>
-  <p>Total time: <%= recipe.oven_temp %></p>
-  <p>Ingredients: <%= recipe.ingredients %></p>
-  <p>Instructions: <%= recipe.instructions %></p>
+  <div class="col-sm-6 col-lg-4 m-4">
+    <div class="card">
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.name %></p>
+      </h5>
+      <p class="card-text"><%= recipe.description %></p>
+      <ul>
+        <li>
+          <p class="card-text"><small class="text-body-secondary">Oven?: <%= recipe.oven ? 'Yes' : 'No' %></small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.rating %>★</small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.cook_time %> minutes</small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.difficulty %>/10 difficulty</small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.total_time %> minutes</small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary">Total time: <%= recipe.oven_temp %></small></p>
+        </li>
+        <li>
+          <p class="card-text"><small class="text-body-secondary">Ingredients: <%= recipe.ingredients %></small></p>
+        </li>
+      </ul>
+      <p class="card-text">Instructions: <%= recipe.instructions %></p>
+      <p class="card-text"><small class="text-body-secondary">Posted by <%= recipe.get_username %> 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
 <% end %>
