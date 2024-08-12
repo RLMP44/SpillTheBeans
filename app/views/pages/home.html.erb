@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<%= link_to "Lists", lists_path, class:"btn btn-primary btn-sm pt-3" %>
+<div class="home-image">
+  <div class="container col-xxl-8">
+    <div class="row flex-lg-row center align-items-center g-5">
+      <div class="col-lg-6">
+        <p class="lead main-color bold-text">Share your recipes with family and friends,<br>
+          but skip all of the obnoxious storytelling<br>
+          and just...</p>
+        <h1 class="display-5 fw-bold lh-1 mb-3 main-color outline">Spill the Beans</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <%= link_to "Take a Gander", lists_path, class:"btn home-page-button btn-lg px-4 me-md-2" %>
+          <button type="button" class="btn spill-button btn-lg px-4">Spill some beans</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
