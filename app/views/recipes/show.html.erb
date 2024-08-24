@@ -1,0 +1,30 @@
+<h1> show recipe </h1>
+<div class="card-body">
+  <h5 class="card-title"><%= @recipe.name %></h5>
+  <p class="card-text"><%= @recipe.description %></p>
+  <ul>
+    <li>
+      <p class="card-text"><small class="text-body-secondary">Oven?: <%= @recipe.oven ? 'Yes' : 'No' %></small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary"><%= @recipe.rating %>★</small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary"><%= @recipe.cook_time %> minutes</small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary"><%= @recipe.difficulty %>/10 difficulty</small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary"><%= @recipe.total_time %> minutes</small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary">Total time: <%= @recipe.oven_temp %></small></p>
+    </li>
+    <li>
+      <p class="card-text"><small class="text-body-secondary">Ingredients: <%= @recipe.ingredients %></small></p>
+    </li>
+  </ul>
+  <p class="card-text">Instructions: <%= @recipe.instructions %></p>
+  <p class="card-text"><small class="text-body-secondary">Posted by <%= @recipe.get_username %> on <%= @recipe.created_at %></small></p>
+</div>
