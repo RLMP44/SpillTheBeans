@@ -17,6 +17,6 @@ class Recipe < ApplicationRecord
   private
 
   def username
-    user.email
+    user.username
   end
 end
