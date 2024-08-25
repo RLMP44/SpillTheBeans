@@ -62,4 +62,22 @@ puts 'pesto'
 dinners = List.create!(title: 'Dinners', user: rachael, comment: 'my go-to for dinners')
 puts 'dinners'
 Bookmark.create!(recipe: pesto, list: dinners, comment: "Aaron's favorite")
+salad = Recipe.create!(
+  user: rachael,
+  name: 'Salad',
+  description: 'the most delicious salad',
+  rating: 8.5,
+  cook_time: 0,
+  total_time: 5,
+  difficulty: 1,
+  oven: false,
+  ingredients:
+    "cucumber, baby leaf, cabbage, carrots, corn, beans, lemon juice, olive oil, salt",
+  instructions:
+    "Mix all dry ingredients."
+)
+puts 'salad'
+appetizers = List.create!(title: 'Appetizers', user: rachael, comment: 'The best starters')
+puts 'appetizers'
+Bookmark.create!(recipe: salad, list: appetizers, comment: 'Yerm!')
 puts 'Done.'

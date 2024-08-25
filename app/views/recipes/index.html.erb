@@ -18,7 +18,7 @@
           </div>
           <div class="recipe-card-overlay overlay-display d-flex align-items-center">
             <p class="card-text"><small class="text-body-secondary">Ingredients: <%= recipe.ingredients %></small></p>
-            <p class="card-text"><small class="text-body-secondary">Posted by <%= recipe.get_username %> on <%= recipe.created_at %></small></p>
+            <p class="card-text"><small class="text-body-secondary">Posted by <%= recipe.get_username %> <%= display_post_time(recipe.created_at) %></small></p>
           </div>
         </div>
       </div>
