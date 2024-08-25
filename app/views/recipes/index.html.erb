@@ -1,25 +1,23 @@
-<div class="container d-flex justify-content-between">
+<div class="recipes-container col-sm-6 col-lg-4 m-4">
   <% @recipes.each do |recipe| %>
-    <div class="col-sm-6 col-lg-4 m-4">
-      <div class="card recipe-card-container">
-        <%= link_to recipe_path(recipe) do %>
-          <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
-          <%#= recipe.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
-        <% end %>
-        <div class="card-body">
-          <div class="recipe-title-row d-flex justify-content-between align-items-start">
-            <h5 class="card-title"><%= recipe.name %></h5>
-            <p class="card-text"><small class="text-body-secondary"><%= recipe.rating %>★</small></p>
-          </div>
-          <p class="card-text"><%= recipe.description %></p>
-          <div class="recipe-title-row d-flex justify-content-between align-items-start">
-            <p class="card-text"><small class="text-body-secondary"><%= recipe.difficulty %>/10 difficulty</small></p>
-            <p class="card-text"><small class="text-body-secondary"><%= recipe.total_time %> min</small></p>
-          </div>
-          <div class="recipe-card-overlay overlay-display d-flex align-items-center">
-            <p class="card-text"><small class="text-body-secondary">Ingredients: <%= recipe.ingredients %></small></p>
-            <p class="card-text"><small class="text-body-secondary">Posted by <%= recipe.get_username %> <%= display_post_time(recipe.created_at) %></small></p>
-          </div>
+    <div class="card recipe-card-container">
+      <%= link_to recipe_path(recipe) do %>
+        <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
+        <%#= recipe.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
+      <% end %>
+      <div class="card-body">
+        <div class="recipe-title-row d-flex justify-content-between align-items-start">
+          <h5 class="card-title"><%= recipe.name %></h5>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.rating %>★</small></p>
+        </div>
+        <p class="card-text"><%= recipe.description %></p>
+        <div class="recipe-title-row d-flex justify-content-between align-items-start">
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.difficulty %>/10 difficulty</small></p>
+          <p class="card-text"><small class="text-body-secondary"><%= recipe.total_time %> min</small></p>
+        </div>
+        <div class="recipe-card-overlay overlay-display d-flex align-items-center">
+          <p class="card-text"><small class="text-body-secondary">Ingredients: <%= recipe.ingredients %></small></p>
+          <p class="card-text"><small class="text-body-secondary">Posted by <%= recipe.get_username %> <%= display_post_time(recipe.created_at) %></small></p>
         </div>
       </div>
     </div>

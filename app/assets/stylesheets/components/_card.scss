@@ -35,3 +35,12 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+
+.recipes-container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  padding: 2rem 1rem;
+  grid-template-columns: 30fr 30fr 30fr 30fr;
+  gap: 2rem;
+}
