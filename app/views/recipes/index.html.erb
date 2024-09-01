@@ -9,9 +9,11 @@
         <h1><%= recipe.name %></h1>
         <span class="price"><%= recipe.rating %>★</span>
         <div class="card-back">
+          <div class="card-back-difficulty">
+            <p class="difficulty">Difficulty: <%= recipe.difficulty.to_i %>/10</p>
+          </div>
           <p><%= recipe.description %></p>
           <%= link_to 'View Recipe', recipe_path(recipe), :class => "link-button" %>
-          <p class="difficulty"><%= recipe.difficulty.to_i %>/10 difficulty</p>
         </div>
       </div>
     </div>
