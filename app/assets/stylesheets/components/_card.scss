@@ -1,6 +1,11 @@
 .recipe-card-image {
-  max-width: 100%;
-  height: auto;
+  // max-width: 100%;
+  // height: auto;
+  width: inherit;
+  height: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .recipe-card-container {
