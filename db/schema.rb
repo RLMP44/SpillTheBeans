@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_25_022245) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_07_022935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_25_022245) do
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_bookmarks_on_list_id"
     t.index ["recipe_id"], name: "index_bookmarks_on_recipe_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "amount"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -46,7 +55,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_25_022245) do
     t.boolean "oven"
     t.integer "total_time"
     t.integer "oven_temp"
-    t.string "ingredients"
     t.string "instructions"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
@@ -66,6 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_25_022245) do
 
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "bookmarks", "recipes"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "lists", "users"
   add_foreign_key "recipes", "users"
 end

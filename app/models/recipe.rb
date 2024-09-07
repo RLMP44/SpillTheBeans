@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :user#, foreign_key: 'rec_lis_user_id'
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
+  has_many :ingredients
   has_many :bookmarks#, foreign_key: 'rec_lis_recipe_id'
   # validates :user, presence: true, foreign_key: 'rec_lis_user_id'
 
