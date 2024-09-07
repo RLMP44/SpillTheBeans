@@ -3,29 +3,33 @@
     <p class="show-title"><%= @recipe.name %></p>
     <p class="show-description"><%= @recipe.description %></p>
     <p class="card-text"><small class="text-body-secondary">Posted by <%= @recipe.get_username %> <%= display_post_time(@recipe.created_at) %></small></p>
-    <ul>
-      <li>
-        <p class="list-item"><small class="text-body-secondary">Oven?: <%= @recipe.oven ? 'Yes' : 'No' %></small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary"><%= @recipe.rating %>★</small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary"><%= @recipe.cook_time %> minutes</small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary"><%= @recipe.difficulty %>/10 difficulty</small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary"><%= @recipe.total_time %> minutes</small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary">Total time: <%= @recipe.oven_temp %></small></p>
-      </li>
-      <li>
-        <p class="list-item"><small class="text-body-secondary">Ingredients: <%= @recipe.ingredients %></small></p>
-      </li>
-    </ul>
+    <div class="lists d-flex justify-content-between">
+      <ul>
+        <li>
+          <p class="list-item"><small class="text-body-secondary">Oven?: <%= @recipe.oven ? 'Yes' : 'No' %></small></p>
+        </li>
+        <li>
+          <p class="list-item"><small class="text-body-secondary"><%= @recipe.rating %>★</small></p>
+        </li>
+        <li>
+          <p class="list-item"><small class="text-body-secondary"><%= @recipe.cook_time %> minutes</small></p>
+        </li>
+        <li>
+          <p class="list-item"><small class="text-body-secondary"><%= @recipe.difficulty %>/10 difficulty</small></p>
+        </li>
+        <li>
+          <p class="list-item"><small class="text-body-secondary"><%= @recipe.total_time %> minutes</small></p>
+        </li>
+        <li>
+          <p class="list-item"><small class="text-body-secondary">Total time: <%= @recipe.oven_temp %></small></p>
+        </li>
+      </ul>
+      <div class="ingredients-container mb-2">
+        <% @recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.amount %> <%= ingredient.name %></li>
+        <% end %>
+      </div>
+    </div>
     <p class="show-text">Instructions: <%= @recipe.instructions %></p>
   </div>
 </div>
