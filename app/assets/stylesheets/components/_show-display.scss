@@ -11,3 +11,17 @@
 .show-text {
   font-size: 20px;
 }
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 70% 25%;
+  grid-gap: 5%;
+}
+
+.ingredients-container {
+  border-left: outset;
+}
+
+.ratings-bar {
+  gap: 1em;
+}
