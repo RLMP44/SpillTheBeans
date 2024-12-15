@@ -1,7 +1,19 @@
 <h1>Lists Index</h1>
-<% @lists.each do |list| %>
-  <%= link_to list.title, list_path(list), class:"btn btn-primary btn-sm pt-3" %>
-<% end %>
+<div class="recipes-container">
+  <% @lists.each do |list| %>
+    <div class="card">
+      <div class="cover">
+        <%#= link_to list.title, list_path(list), class:"btn btn-primary btn-sm pt-3" %>
+        <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
+        <%#= list.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
+        <h1><%= list.title %></h1>
+        <div class="card-back">
+          <%= link_to 'View List', list_path(list), :class => "link-button" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
