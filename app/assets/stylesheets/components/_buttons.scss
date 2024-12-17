@@ -1,0 +1,19 @@
+.floating-button {
+  position: absolute;
+  z-index: 999;
+  width: 46px;
+  height: 46px;
+  background: #91ba52;
+  border-radius: 100%;
+  right: 2rem;
+  bottom: 2rem;
+  color: white;
+  border: white;
+  font-weight: bolder;
+  font-size: x-large;
+  box-shadow: lightgrey 3px 3px 3px;
+  &:hover {
+    background: #729341;
+    transition: 0.3s;
+  }
+}
