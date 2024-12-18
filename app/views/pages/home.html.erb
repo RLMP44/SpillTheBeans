@@ -13,4 +13,40 @@
       </div>
     </div>
   </div>
+  <%#----------------- recipes ----------------- %>
+  <div class="recipes-container main-background-color">
+    <h1>Trending Recipes</h1>
+    <% @top_recipes.each do |recipe| %>
+      <div class="card">
+        <div class="cover">
+          <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
+          <%#= recipe.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
+          <h1><%= recipe&.name %></h1>
+          <span class="price"><%= recipe&.rating %>★</span>
+          <div class="card-back">
+            <div class="card-back-difficulty">
+              <p class="difficulty">Difficulty: <%= recipe&.difficulty.to_i %>/10</p>
+            </div>
+            <p><%= recipe&.description %></p>
+            <%= link_to 'View Recipe', recipe_path(recipe), :class => "link-button" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%# ----------------- lists ----------------- %>
+    <h1>Top Lists</h1>
+    <% @lists.each do |list| %>
+      <div class="card">
+        <div class="cover">
+          <%#= link_to list.title, list_path(list), class:"btn btn-primary btn-sm pt-3" %>
+          <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
+          <%#= list.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
+          <h1><%= list.title %></h1>
+          <div class="card-back">
+            <%= link_to 'View List', list_path(list), :class => "link-button" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

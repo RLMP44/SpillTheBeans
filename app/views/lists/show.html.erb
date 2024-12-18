@@ -26,6 +26,8 @@ class:"btn btn-outline-danger btn-sm pt-3" %>
   </div>
 </div>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary floating" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  +
-</button>
+<% if @list.user == current_user %>
+  <button type="button" class="floating-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    +
+  </button>
+<% end %>
