@@ -17,35 +17,34 @@
 }
 
 .outline {
-  text-shadow: #688737 1px 1px 1px, #688737 1px 1px 1px, #688737 1px 1px 1px, #688737 1px 1px 1px, #688737 1px 1px 1px, #688737 1px 1px 1px;
+  text-shadow: $green-shadow 1px 1px 1px, $green-shadow 1px 1px 1px, $green-shadow 1px 1px 1px, $green-shadow 1px 1px 1px, $green-shadow 1px 1px 1px, $green-shadow 1px 1px 1px;
 }
 
 .main-color {
-  color: #91ba52;
+  color: $green;
 }
 
 .main-background-color {
-  background-color: #f8fced;
+  background-color: $main-white;
 }
 
 .home-page-button {
-  background-color: #91ba52;
+  background-color: $green;
   color: #383839;
-  box-shadow: #688737 1px 1px 2px 1px;
+  box-shadow: $green-shadow 1px 1px 2px 1px;
   &:hover {
-    background-color: #688737;
+    background-color: $green-shadow;
     transition: .5s;
-
   }
 }
 
 .spill-button {
   background-color: #646a6f;
-  color: white;
-  box-shadow: #688737 1px 1px 2px 1px;
+  color: $main-white;
+  box-shadow: $green-shadow 1px 1px 2px 1px;
   &:hover {
     background-color: #383c3e;
-    color: white;
+    color: $main-white;
     transition: .5s;
   }
 }

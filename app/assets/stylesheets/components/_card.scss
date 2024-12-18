@@ -15,7 +15,7 @@
 
 .recipe-card-text {
   white-space: nowrap;
-  color: white;
+  color: $main-white;
   font-size: 20px;
   overflow: hidden;
   top: 50%;
@@ -59,6 +59,7 @@ body{
   transition: ease all $transition-time;
   perspective: 1200px;
   &:hover{
+    background-color: $main-white;
     .cover{
       transform: rotateX(0deg) rotateY(-180deg);
       &:before{
@@ -118,7 +119,7 @@ body{
       position: absolute;
       bottom: 55px;
       left: 50px;
-      color: white;
+      color: $main-white;
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index:3;
@@ -130,7 +131,7 @@ body{
       position: absolute;
       top: 55px;
       right: 50px;
-      color: white;
+      color: $main-white;
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index:4;
@@ -156,10 +157,10 @@ body{
       transition: ease transform $transition-time, ease background .5s;
       transform: translateZ(-1px) rotatey(-180deg);
       background: transparent;
-      border: 1px solid white;
+      border: 1px solid $main-white;
       font-weight: 200;
       font-size: 1.3em;
-      color: white;
+      color: $main-white;
       padding: 14px 32px;
       margin: 1em;
       outline: none;
@@ -171,7 +172,7 @@ body{
       transition: ease transform $transition-time, ease background .5s;
       transform: translateZ(-1px) rotatey(-180deg);
       font-weight: 200;
-      color: white;
+      color: $main-white;
       transform-style: preserve-3d;
       transition: ease all $transition-time;
       z-index:4;
@@ -185,15 +186,15 @@ body{
       transition: ease transform $transition-time, ease background .5s;
       transform: translateZ(-1px) rotatey(-180deg);
       background: transparent;
-      border: 1px solid white;
+      border: 1px solid $main-white;
       font-weight: 200;
       font-size: 1.1em;
-      color: white;
+      color: $main-white;
       padding: 7px 16px;
       outline: none;
       text-decoration: none;
       &:hover{
-        background-color: white;
+        background-color: $main-white;
         color: #0b0f08;
       }
     }
