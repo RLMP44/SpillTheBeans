@@ -14,7 +14,9 @@ RSpec.describe "List", type: :model do
   end
 
   let(:titanic) do
-    Recipe.create!(title: "Titanic", description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+    Recipe.create!(title: "Titanic",
+                   description: "101-year-old Rose DeWitt Bukater tells the story of her life
+                   aboard the Titanic, 84 years later.")
   end
 
   it "has a title" do
@@ -49,13 +51,13 @@ RSpec.describe "List", type: :model do
     expect(list).to respond_to(:recipes)
     expect(list.recipes.count).to eq(0)
 
-    list.bookmarks.create(list: list, recipe: titanic, comment: "Great recipe!")
+    list.bookmarks.create(list:, recipe: titanic, comment: "Great recipe!")
     expect(list.recipes.count).to eq(1)
   end
 
   it "should destroy child saved recipes when destroying self" do
     list = List.create!(valid_attributes)
-    list.bookmarks.create(list: list, recipe: titanic, comment: "Great recipe!")
+    list.bookmarks.create(list:, recipe: titanic, comment: "Great recipe!")
     expect { list.destroy }.to change { Bookmark.count }.from(1).to(0)
   end
 end

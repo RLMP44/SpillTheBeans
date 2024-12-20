@@ -6,10 +6,11 @@ end
 
 if defined?(BookmarksController)
   RSpec.describe BookmarksController, type: :controller do
-
     before(:each) do
       @user = User.create!(email: 'rach@me.com', password: '123456')
-      @recipe = Recipe.create!(user: @user, name: "Titanic", description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+      @recipe = Recipe.create!(user: @user, name: "Titanic",
+                               description: "101-year-old Rose DeWitt Bukater tells the story of her life
+                               aboard the Titanic, 84 years later.")
       @list = List.create!(user: @user, title: "Drama", comment: "wowza")
     end
 
@@ -31,9 +32,9 @@ if defined?(BookmarksController)
     describe "POST create" do
       describe "with valid params" do
         it "creates a new bookmark" do
-          expect {
+          expect do
             post :create, params: valid_attributes
-          }.to change(Bookmark, :count).by(1)
+          end.to change(Bookmark, :count).by(1)
         end
 
         it "assigns a newly created bookmark as @bookmark" do
@@ -64,9 +65,9 @@ if defined?(BookmarksController)
     describe "DELETE destroy" do
       it "deletes a bookmark" do
         @bookmark = Bookmark.create!(valid_attributes[:bookmark].merge(list_id: @list.id))
-        expect {
+        expect do
           delete :destroy, params: { id: @bookmark.id }
-        }.to change(Bookmark, :count).by(-1)
+        end.to change(Bookmark, :count).by(-1)
       end
     end
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 begin
-  require "./spec/controllers/bookmarks_controller.rb"
+  require "./spec/controllers/bookmarks_controller"
 rescue LoadError
 end
 
@@ -48,31 +48,31 @@ if defined?(ListsController)
     describe "POST create" do
       describe "with valid params" do
         it "creates a new List" do
-          expect {
-            post :create, params: { list: valid_attributes}
-          }.to change(List, :count).by(1)
+          expect do
+            post :create, params: { list: valid_attributes }
+          end.to change(List, :count).by(1)
         end
 
         it "assigns a newly created list as @list" do
-          post :create, params: { list: valid_attributes}
+          post :create, params: { list: valid_attributes }
           expect(assigns(:list)).to be_a(List)
           expect(assigns(:list)).to be_persisted
         end
 
         it "redirects to the created list" do
-          post :create, params: { list: valid_attributes}
+          post :create, params: { list: valid_attributes }
           expect(response).to redirect_to(List.last)
         end
       end
 
       describe "with invalid params" do
         it "assigns a newly created but unsaved list as @list" do
-          post :create, params: { list: invalid_attributes}
+          post :create, params: { list: invalid_attributes }
           expect(assigns(:list)).to be_a_new(List)
         end
 
         it "re-renders the 'new' template" do
-          post :create, params: { list: invalid_attributes}
+          post :create, params: { list: invalid_attributes }
           expect(response).to render_template("new")
         end
       end

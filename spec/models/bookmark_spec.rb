@@ -6,11 +6,15 @@ RSpec.describe "Bookmark", type: :model do
   end
 
   let(:titanic) do
-    Recipe.create!(user: rach, name: "Titanic", description: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later.")
+    Recipe.create!(user: rach, name: "Titanic",
+                   description: "101-year-old Rose DeWitt Bukater tells the story
+                   of her life aboard the Titanic, 84 years later.")
   end
 
   let(:wonder_woman) do
-    Recipe.create!(user: rach, name: "Wonder Woman 1984", description: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s")
+    Recipe.create!(user: rach, name: "Wonder Woman 1984",
+                   description: "Wonder Woman comes into conflict with the Soviet Union
+                   during the Cold War in the 1980s")
   end
 
   let(:classic_list) do
