@@ -17,13 +17,13 @@ class Recipe < ApplicationRecord
   #   rec_lis_user_id
   # end
 
-  def retrieve_username
-    username
+  def posted_by
+    retrieve_username
   end
 
   private
 
-  def username
+  def retrieve_username
     user.username
   end
 end
