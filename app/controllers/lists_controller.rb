@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   def show
     @bookmarks = @list.bookmarks.all
     @bookmark = Bookmark.new
+    @recipes = Recipe.pluck(:id, :name)
   end
 
   def create
