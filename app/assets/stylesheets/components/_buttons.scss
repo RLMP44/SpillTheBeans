@@ -3,7 +3,7 @@
   z-index: 999;
   width: 46px;
   height: 46px;
-  background: #91ba52;
+  background: $green;
   border-radius: 100%;
   right: 2rem;
   bottom: 2rem;
@@ -13,7 +13,7 @@
   font-size: x-large;
   box-shadow: lightgrey 3px 3px 3px;
   &:hover {
-    background: #729341;
+    background: $green-shadow;
     transition: 0.3s;
   }
 }
