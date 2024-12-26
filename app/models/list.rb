@@ -4,7 +4,7 @@ class List < ApplicationRecord
   has_many :bookmarks # , foreign_key: 'rec_lis_list_id', dependent: :destroy
   has_many :recipes, through: :bookmarks # , foreign_key: 'rec_lis_list_id'
   validates :title, presence: true, uniqueness: true
-  validates :comment, length: { minimum: 3 }
+  # validates :comment, length: { minimum: 3 }
   # validates :user, presence: true, foreign_key: 'rec_lis_user_id'
 
   # def user_id
