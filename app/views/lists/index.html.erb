@@ -1,17 +1,17 @@
-<h1>Lists Index</h1>
 <div class="recipes-container">
+  <% if @user_lists.exists? %>
+    <h1>My Lists</h1>
+    <% @user_lists.each do |list| %>
+      <%= render partial: 'card', locals: { list: list } %>
+    <% end %>
+  <% else %>
+    <h1>Create a list!</h1>
+  <% end %>
+</div>
+<div class="recipes-container">
+  <h1>Other Lists</h1>
   <% @lists.each do |list| %>
-    <div class="card">
-      <div class="cover">
-        <%#= link_to list.title, list_path(list), class:"btn btn-primary btn-sm pt-3" %>
-        <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
-        <%#= list.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
-        <h1><%= list.title %></h1>
-        <div class="card-back">
-          <%= link_to 'View List', list_path(list), :class => "link-button" %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'card', locals: { list: list } %>
   <% end %>
 </div>
 <!-- Modal -->
