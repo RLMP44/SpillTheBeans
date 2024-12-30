@@ -13,7 +13,7 @@ if defined?(ListsController)
     let(:valid_attributes) do
       {
         user: @user,
-        title: "Comedy",
+        title: "Dinner",
         comment: "coolio"
       }
     end
@@ -37,13 +37,6 @@ if defined?(ListsController)
         expect(assigns(:list)).to eq(list)
       end
     end
-
-    # describe "GET new" do
-    #   it "assigns a new list as @list" do
-    #     get :new, params: {}
-    #     expect(assigns(:list)).to be_a_new(List)
-    #   end
-    # end
 
     describe "POST create" do
       describe "with valid params" do

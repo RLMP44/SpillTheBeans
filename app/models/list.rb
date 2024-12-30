@@ -1,7 +1,7 @@
 class List < ApplicationRecord
   # self.table_name = 'rec_lis_lists'
   belongs_to :user # , foreign_key: 'rec_lis_user_id'
-  has_many :bookmarks # , foreign_key: 'rec_lis_list_id', dependent: :destroy
+  has_many :bookmarks, dependent: :destroy # , foreign_key: 'rec_lis_list_id'
   has_many :recipes, through: :bookmarks # , foreign_key: 'rec_lis_list_id'
   validates :title, presence: true, uniqueness: true
   # validates :comment, length: { minimum: 3 }

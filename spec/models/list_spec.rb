@@ -8,20 +8,20 @@ RSpec.describe "List", type: :model do
   let(:valid_attributes) do
     {
       user: rach,
-      title: "Comedy",
+      title: "Breakfast",
       comment: "wowza"
     }
   end
 
-  let(:titanic) do
-    Recipe.create!(title: "Titanic",
-                   description: "101-year-old Rose DeWitt Bukater tells the story of her life
-                   aboard the Titanic, 84 years later.")
+  let(:strata) do
+    Recipe.create!(user: rach,
+                   name: "strata",
+                   description: "Baked egg casserole.")
   end
 
   it "has a title" do
-    list = List.new(user: rach, title: "Comedy", comment: "wowowow")
-    expect(list.title).to eq("Comedy")
+    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
+    expect(list.title).to eq("Breakfast")
   end
 
   it "title cannot be blank" do
@@ -30,13 +30,13 @@ RSpec.describe "List", type: :model do
   end
 
   it "title is unique" do
-    List.create!(user: rach, title: "Comedy", comment: "wowowow")
-    list = List.new(user: rach, title: "Comedy", comment: "wowowow")
+    List.create!(user: rach, title: "Breakfast", comment: "wowowow")
+    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
     expect(list).not_to be_valid
   end
 
   it "belongs to a user" do
-    list = List.new(user: rach, title: "Comedy", comment: "wowowow")
+    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
     expect(list.user).to eq(rach)
   end
 
@@ -51,13 +51,13 @@ RSpec.describe "List", type: :model do
     expect(list).to respond_to(:recipes)
     expect(list.recipes.count).to eq(0)
 
-    list.bookmarks.create(list:, recipe: titanic, comment: "Great recipe!")
+    list.bookmarks.create(list:, recipe: strata, comment: "Great recipe!")
     expect(list.recipes.count).to eq(1)
   end
 
   it "should destroy child saved recipes when destroying self" do
     list = List.create!(valid_attributes)
-    list.bookmarks.create(list:, recipe: titanic, comment: "Great recipe!")
+    list.bookmarks.create(list:, recipe: strata, comment: "Great recipe!")
     expect { list.destroy }.to change { Bookmark.count }.from(1).to(0)
   end
 end

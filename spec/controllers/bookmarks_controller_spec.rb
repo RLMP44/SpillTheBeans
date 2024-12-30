@@ -8,26 +8,19 @@ if defined?(BookmarksController)
   RSpec.describe BookmarksController, type: :controller do
     before(:each) do
       @user = User.create!(email: 'rach@me.com', password: '123456')
-      @recipe = Recipe.create!(user: @user, name: "Titanic",
-                               description: "101-year-old Rose DeWitt Bukater tells the story of her life
-                               aboard the Titanic, 84 years later.")
-      @list = List.create!(user: @user, title: "Drama", comment: "wowza")
+      @recipe = Recipe.create!(user: @user, name: "Pesto bowl",
+                               description: "Pesto and chicken and rice.")
+      @list = List.create!(user: @user, title: "Dinner", comment: "wowza")
+      authenticate_user
     end
 
     let(:valid_attributes) do
-      { list_id: @list.id, bookmark: { recipe_id: @recipe.id, comment: "Great movie!" } }
+      { list_id: @list.id, bookmark: { recipe_id: @recipe.id, comment: "Great recipe" } }
     end
 
     let(:invalid_attributes) do
       { list_id: @list.id, bookmark: { recipe_id: @recipe.id, comment: "Good!" } }
     end
-
-    # describe "GET new" do
-    #   it "assigns a new bookmark to @bookmark" do
-    #     get :new, params: valid_attributes
-    #     expect(assigns(:bookmark)).to be_a_new(Bookmark)
-    #   end
-    # end
 
     describe "POST create" do
       describe "with valid params" do
@@ -57,7 +50,7 @@ if defined?(BookmarksController)
 
         it "re-renders the 'new' template or 'lists/show'" do
           post :create, params: invalid_attributes
-          expect(response).to render_template('new').or redirect_to(@list)
+          expect(response).to redirect_to(@list)
         end
       end
     end

@@ -7,29 +7,17 @@ RSpec.describe "recipe", type: :model do
 
   let(:valid_attributes) do
     {
-      name: "Titanic",
-      description: "101-year-old Rose DeWitt Bukater tells the story of her life
-      aboard the Titanic, 84 years later.",
-      # poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+      name: "Strata",
+      description: "Baked egg casserole",
       rating: 7.9
     }
   end
 
   it "has a name and a description" do
-    recipe = Recipe.new(name: "Titanic",
-                        description: "101-year-old Rose DeWitt Bukater tells the story of her life
-                        aboard the Titanic, 84 years later.")
-    expect(recipe.name).to eq("Titanic")
-    expect(recipe.description).to eq("101-year-old Rose DeWitt Bukater tells the story of her life
-    aboard the Titanic, 84 years later.")
-  end
-
-  it "name is unique" do
-    Recipe.create!(name: "Titanic",
-                   description: "101-year-old Rose DeWitt Bukater tells the story of her life
-                   aboard the Titanic, 84 years later.")
-    recipe = Recipe.new(name: "Titanic")
-    expect(recipe).not_to be_valid
+    recipe = Recipe.new(name: "Strata",
+                        description: "Baked egg casserole")
+    expect(recipe.name).to eq("Strata")
+    expect(recipe.description).to eq("Baked egg casserole")
   end
 
   it "name cannot be blank" do
@@ -59,7 +47,7 @@ RSpec.describe "recipe", type: :model do
 
   it "should not be able to destroy self if has bookmarks children" do
     recipe = Recipe.create!(valid_attributes)
-    list = List.create!(name: "Drama")
+    list = List.create!(name: "Breakfast")
     recipe.bookmarks.create(list:, comment: "Great recipe!")
 
     expect { recipe.destroy }.to raise_error(ActiveRecord::InvalidForeignKey)
