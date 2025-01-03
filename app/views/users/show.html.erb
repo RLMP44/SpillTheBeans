@@ -1,5 +1,23 @@
-<h1>Hello, <%= @user.username %>!</h1>
-
-<h2>My Lists</h2>
-
-<h2>My Recipes</h2>
+<h2><%= @user.username %>'s profile</h2>
+<%# ----------------- recipes ----------------- %>
+<div class="recipes-container main-background-color">
+  <h2>My Recipes</h2>
+  <% if @recipes.exists? %>
+    <% @recipes.each do |recipe| %>
+      <%= render partial: 'shared/recipe_card', locals: { recipe: recipe } %>
+    <% end %>
+  <% else %>
+    <h2>No recipes yet!</h2>
+  <% end %>
+</div>
+<%# ----------------- lists ----------------- %>
+<div class="recipes-container main-background-color">
+  <h2>My Lists</h2>
+  <% if @lists.exists? %>
+    <% @lists.each do |list| %>
+      <%= render partial: 'shared/list_card', locals: { list: list } %>
+    <% end %>
+  <% else %>
+    <h2>No lists yet!</h2>
+  <% end %>
+</div>
