@@ -1,0 +1,11 @@
+<!-- app/views/shared/_card_layout.html.erb -->
+<div class="recipes-container main-background-color">
+  <h2><%= t(".#{item_type}") %>s</h2>
+  <% if collection.exists? %>
+    <% collection.each do |item| %>
+      <%= render partial: "shared/#{item_type}_card", locals: { item_type => item, item: item } %>
+    <% end %>
+  <% else %>
+    <h2>No <%= ("#{item_type}") %>s yet!</h2>
+  <% end %>
+</div>

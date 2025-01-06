@@ -3,14 +3,14 @@
   <div class="cover">
     <%= image_tag("placeholder.png", alt: 'placeholder', class: 'h-16, recipe-card-image')%>
     <%#= recipe.photo.key.present? ? cl_image_tag(experience.photo.key, class:"position-relative") : image_tag("super_mario_arena.gif", class: "position-relative") %>
-    <h1><%= recipe&.name %></h1>
-    <span class="price"><%= recipe&.rating %>★</span>
+    <h1><%= item&.name %></h1>
+    <span class="price"><%= item&.rating %>★</span>
     <div class="card-back">
       <div class="card-back-difficulty">
-        <p class="difficulty">Difficulty: <%= recipe&.difficulty.to_i %>/10</p>
+        <p class="difficulty">Difficulty: <%= item&.difficulty.to_i %>/10</p>
       </div>
-      <p><%= recipe&.description %></p>
-      <%= link_to 'View Recipe', recipe_path(recipe), :class => "link-button" %>
+      <p><%= item&.description %></p>
+      <%= link_to 'View Recipe', recipe_path(item), :class => "link-button" %>
     </div>
   </div>
 </div>
