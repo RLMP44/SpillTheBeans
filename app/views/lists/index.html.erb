@@ -1,19 +1,6 @@
-<div class="recipes-container">
-  <% if @user_lists.exists? %>
-    <h1>My Lists</h1>
-    <% @user_lists.each do |list| %>
-      <%= render partial: 'card', locals: { list: list } %>
-    <% end %>
-  <% else %>
-    <h1>Create a list!</h1>
-  <% end %>
-</div>
-<div class="recipes-container">
-  <h1>Other Lists</h1>
-  <% @lists.each do |list| %>
-    <%= render partial: 'card', locals: { list: list } %>
-  <% end %>
-</div>
+<%= render partial: 'shared/card_layout', locals: { collection: @user_lists, item_type: 'list', collection_name: 'My Lists', prompt: 'Create a list!' } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', collection_name: 'Other Lists' } %>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
