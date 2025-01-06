@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
     if @bookmark.destroy
       redirect_to list_path(list), notice: 'Bookmark deleted.'
     else
-      render 'lists/show', status: :unprocessable_entity,  alert: 'Delete failed'
+      render 'lists/show', status: :unprocessable_entity, alert: 'Delete failed'
     end
   end
 

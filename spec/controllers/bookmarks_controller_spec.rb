@@ -7,8 +7,8 @@ end
 if defined?(BookmarksController)
   RSpec.describe BookmarksController, type: :controller do
     let(:user) { create(:user) }
-    let(:recipe) { create(:recipe, user: user) }
-    let(:list) { create(:list, user: user) }
+    let(:recipe) { create(:recipe, user:) }
+    let(:list) { create(:list, user:) }
 
     before do
       sign_in user
