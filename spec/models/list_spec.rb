@@ -55,7 +55,7 @@ RSpec.describe "List", type: :model do
     expect(list.recipes.count).to eq(1)
   end
 
-  it "should destroy child saved recipes when destroying self" do
+  it "should destroy child saved bookmarks when destroying self" do
     list = List.create!(valid_attributes)
     list.bookmarks.create(list:, recipe: strata, comment: "Great recipe!")
     expect { list.destroy }.to change { Bookmark.count }.from(1).to(0)

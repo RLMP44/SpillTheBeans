@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "recipe", type: :model do
-  let(:rach) do
-    User.create!(email: 'rach@me.com', password: '123456')
-  end
+  let(:user) { create(:user) }
 
   let(:valid_attributes) do
     {
+      user:,
       name: "Strata",
       description: "Baked egg casserole",
       rating: 7.9
@@ -35,8 +34,8 @@ RSpec.describe "recipe", type: :model do
   end
 
   it "belongs to a user" do
-    recipe = Recipe.new(user: rach, name: "Food", comment: "wowowow")
-    expect(recipe.user).to eq(rach)
+    recipe = Recipe.new(user:, name: "Food", comment: "wowowow")
+    expect(recipe.user).to eq(user)
   end
 
   it "has many bookmarks" do
@@ -47,7 +46,7 @@ RSpec.describe "recipe", type: :model do
 
   it "should not be able to destroy self if has bookmarks children" do
     recipe = Recipe.create!(valid_attributes)
-    list = List.create!(name: "Breakfast")
+    list = List.create!(user:, title: "Breakfast")
     recipe.bookmarks.create(list:, comment: "Great recipe!")
 
     expect { recipe.destroy }.to raise_error(ActiveRecord::InvalidForeignKey)

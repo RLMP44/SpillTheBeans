@@ -6,20 +6,18 @@ end
 
 if defined?(ListsController)
   RSpec.describe ListsController, type: :controller do
-    before(:each) do
-      @user = User.create!(email: 'rach@me.com', password: '123456')
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
     end
 
     let(:valid_attributes) do
-      {
-        user: @user,
-        title: "Dinner",
-        comment: "coolio"
-      }
+      { user:, title: "Dinner", comment: "coolio" }
     end
 
     let(:invalid_attributes) do
-      { title: "" }
+      { user:, title: "" }
     end
 
     describe "GET index" do
@@ -63,10 +61,24 @@ if defined?(ListsController)
           post :create, params: { list: invalid_attributes }
           expect(assigns(:list)).to be_a_new(List)
         end
+      end
+    end
+    describe "DELETE destroy" do
+      let!(:recipe) { create(:recipe, user: user) }
+      let!(:list) { create(:list, user: user) }
 
-        it "re-renders the 'new' template" do
-          post :create, params: { list: invalid_attributes }
-          expect(response).to render_template("new")
+      context "when deleting a list" do
+        it "deletes the list" do
+          expect {
+            delete :destroy, params: { id: list.id }
+          }.to change(List, :count).by(-1)
+        end
+
+        it "destroys associated bookmarks" do
+          list.bookmarks.create!(recipe: recipe, comment: "Great recipe!")
+          expect {
+            delete :destroy, params: { id: list.id }
+          }.to change(Bookmark, :count).by(-1)
         end
       end
     end
