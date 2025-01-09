@@ -4,7 +4,6 @@ class Bookmark < ApplicationRecord
   belongs_to :list # , foreign_key: 'rec_lis_list_id'
   # validates :rec_lis_recipe_id, uniqueness: { scope: :list }#, foreign_key: 'rec_lis_list_id' }
   validates :recipe_id, uniqueness: { scope: :list }
-  validates :comment, length: { minimum: 3 }
 
   # def recipe_id
   #   rec_lis_recipe_id

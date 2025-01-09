@@ -1,63 +1,52 @@
 require 'rails_helper'
 
-RSpec.describe "List", type: :model do
-  let(:rach) do
-    User.create!(email: 'rach@me.com', password: '123456')
+RSpec.describe 'List', type: :model do
+  let(:user) { create(:user) }
+  let(:user2) { create(:user, email: '12@me.com', password: '123456', username: 'user2') }
+  let(:list) { create(:list, user:) }
+  let(:recipe) { create(:recipe, user:) }
+
+  it 'has a title' do
+    expect(list.title).to eq('Dinner')
   end
 
-  let(:valid_attributes) do
-    {
-      user: rach,
-      title: "Breakfast",
-      comment: "wowza"
-    }
+  it 'title cannot be blank' do
+    untitled_list = List.new
+    expect(untitled_list).not_to be_valid
   end
 
-  let(:strata) do
-    Recipe.create!(user: rach,
-                   name: "strata",
-                   description: "Baked egg casserole.")
+  it 'title is unique when same user' do
+    list
+    dup_list = List.new(user:, title: 'Dinner')
+    expect(dup_list).not_to be_valid
   end
 
-  it "has a title" do
-    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
-    expect(list.title).to eq("Breakfast")
+  it 'title can be used by other users' do
+    user2
+    user2_list = List.new(user: user2, title: 'Dinner')
+    expect(user2_list).to be_valid
   end
 
-  it "title cannot be blank" do
-    list = List.new
-    expect(list).not_to be_valid
+  it 'belongs to a user' do
+    expect(list.user).to eq(user)
   end
 
-  it "title is unique" do
-    List.create!(user: rach, title: "Breakfast", comment: "wowowow")
-    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
-    expect(list).not_to be_valid
-  end
-
-  it "belongs to a user" do
-    list = List.new(user: rach, title: "Breakfast", comment: "wowowow")
-    expect(list.user).to eq(rach)
-  end
-
-  it "has many bookmarks" do
-    list = List.new(valid_attributes)
+  it 'has many bookmarks' do
+    Bookmark.create!(list:, recipe:)
     expect(list).to respond_to(:bookmarks)
-    expect(list.bookmarks.count).to eq(0)
+    expect(list.bookmarks.count).to eq(1)
   end
 
-  it "has many recipes" do
-    list = List.create!(valid_attributes)
+  it 'has many recipes' do
     expect(list).to respond_to(:recipes)
     expect(list.recipes.count).to eq(0)
 
-    list.bookmarks.create(list:, recipe: strata, comment: "Great recipe!")
+    list.bookmarks.create(list:, recipe:, comment: 'Great recipe!')
     expect(list.recipes.count).to eq(1)
   end
 
-  it "should destroy child saved bookmarks when destroying self" do
-    list = List.create!(valid_attributes)
-    list.bookmarks.create(list:, recipe: strata, comment: "Great recipe!")
+  it 'should destroy child saved bookmarks when destroying self' do
+    list.bookmarks.create(list:, recipe:, comment: 'Great recipe!')
     expect { list.destroy }.to change { Bookmark.count }.from(1).to(0)
   end
 end

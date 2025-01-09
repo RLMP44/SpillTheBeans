@@ -38,11 +38,6 @@ RSpec.describe "Bookmark", type: :model do
     expect(bookmark.comment).to eq("Great recipe!")
   end
 
-  it "comment cannot be shorter than 3 characters" do
-    bookmark = Bookmark.new(comment: "ya", list: classic_list, recipe: titanic)
-    expect(bookmark).not_to be_valid
-  end
-
   it "belongs to a recipe" do
     bookmark = Bookmark.new(recipe: titanic)
     expect(bookmark.recipe).to eq(titanic)
