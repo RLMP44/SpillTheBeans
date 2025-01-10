@@ -22,7 +22,6 @@ RSpec.describe 'List', type: :model do
   end
 
   it 'title can be used by other users' do
-    user2
     user2_list = List.new(user: user2, title: 'Dinner')
     expect(user2_list).to be_valid
   end

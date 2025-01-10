@@ -1,77 +1,57 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Bookmark", type: :model do
-  let(:rach) do
-    User.create!(email: 'rach@me.com', password: '123456')
-  end
-
-  let(:titanic) do
-    Recipe.create!(user: rach, name: "Titanic",
-                   description: "101-year-old Rose DeWitt Bukater tells the story
-                   of her life aboard the Titanic, 84 years later.")
-  end
-
-  let(:wonder_woman) do
-    Recipe.create!(user: rach, name: "Wonder Woman 1984",
-                   description: "Wonder Woman comes into conflict with the Soviet Union
-                   during the Cold War in the 1980s")
-  end
-
-  let(:classic_list) do
-    List.create!(user: rach, title: "Classic recipes", comment: "classic")
-  end
-
-  let(:comedy_list) do
-    List.create!(user: rach, title: "Comedy", comment: "hilariously bad")
-  end
+RSpec.describe 'Bookmark', type: :model do
+  let(:user) { create(:user) }
+  let(:list) { create(:list, user:) }
+  let(:list2) { create(:list, user:, title: 'Breakfasts') }
+  let(:recipe) { create(:recipe, user:) }
+  let(:recipe2) { create(:recipe, user:, name: 'Strata') }
+  let(:bookmark) { create(:bookmark, list:, recipe:) }
 
   let(:valid_attributes) do
     {
-      comment: "Great recipe!",
-      recipe: titanic,
-      list: classic_list
+      comment: 'Great recipe!',
+      recipe:,
+      list:
     }
   end
 
-  it "has a comment" do
-    bookmark = Bookmark.new(comment: "Great recipe!")
-    expect(bookmark.comment).to eq("Great recipe!")
+  it 'responds to comment' do
+    expect(bookmark.comment).to eq('For family parties')
   end
 
-  it "belongs to a recipe" do
-    bookmark = Bookmark.new(recipe: titanic)
-    expect(bookmark.recipe).to eq(titanic)
+  it 'belongs to a recipe' do
+    expect(bookmark.recipe).to eq(recipe)
   end
 
-  it "belongs to a list" do
-    bookmark = Bookmark.new(list: classic_list)
-    expect(bookmark.list).to eq(classic_list)
+  it 'belongs to a list' do
+    expect(bookmark.list).to eq(list)
   end
 
-  it "recipe cannot be blank" do
+  it 'recipe cannot be blank' do
     attributes = valid_attributes
     attributes.delete(:recipe)
     bookmark = Bookmark.new(attributes)
     expect(bookmark).not_to be_valid
   end
 
-  it "list cannot be blank" do
+  it 'list cannot be blank' do
     attributes = valid_attributes
     attributes.delete(:list)
     bookmark = Bookmark.new(attributes)
     expect(bookmark).not_to be_valid
   end
 
-  it "is unique for a given recipe/list couple" do
-    Bookmark.create!(valid_attributes)
-
-    bookmark = Bookmark.new(valid_attributes.merge(comment: "Award-winning"))
-    expect(bookmark).not_to be_valid
-
-    bookmark = Bookmark.new(valid_attributes.merge(list: comedy_list))
+  it 'is unique for a given recipe/list couple' do
     expect(bookmark).to be_valid
 
-    bookmark = Bookmark.new(valid_attributes.merge(recipe: wonder_woman))
-    expect(bookmark).to be_valid
+    new_comment_bookmark = Bookmark.new(valid_attributes.merge(comment: 'Award-winning'))
+    expect(new_comment_bookmark).not_to be_valid
+
+    new_recipe_bookmark = Bookmark.new(valid_attributes.merge(recipe: recipe2))
+    expect(new_recipe_bookmark).to be_valid
+
+    new_list_bookmark = Bookmark.new(valid_attributes.merge(list: list2))
+    expect(new_list_bookmark).to be_valid
   end
 end
