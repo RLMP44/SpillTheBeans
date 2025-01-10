@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'List', type: :model do
   let(:user) { create(:user) }
   let(:user2) { create(:user, email: '12@me.com', password: '123456', username: 'user2') }
@@ -49,3 +50,4 @@ RSpec.describe 'List', type: :model do
     expect { list.destroy }.to change { Bookmark.count }.from(1).to(0)
   end
 end
+# rubocop:enable Metrics/BlockLength

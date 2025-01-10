@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'Bookmark', type: :model do
   let(:user) { create(:user) }
   let(:list) { create(:list, user:) }
@@ -55,3 +56,4 @@ RSpec.describe 'Bookmark', type: :model do
     expect(new_list_bookmark).to be_valid
   end
 end
+# rubocop:enable Metrics/BlockLength

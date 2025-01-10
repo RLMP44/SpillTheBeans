@@ -5,6 +5,7 @@ rescue LoadError
 end
 
 if defined?(ListsController)
+  # rubocop:disable Metrics/BlockLength
   RSpec.describe ListsController, type: :controller do
     let(:user) { create(:user) }
 
@@ -64,21 +65,21 @@ if defined?(ListsController)
       end
     end
     describe "DELETE destroy" do
-      let!(:recipe) { create(:recipe, user: user) }
-      let!(:list) { create(:list, user: user) }
+      let!(:recipe) { create(:recipe, user:) }
+      let!(:list) { create(:list, user:) }
 
       context "when deleting a list" do
         it "deletes the list" do
-          expect {
+          expect do
             delete :destroy, params: { id: list.id }
-          }.to change(List, :count).by(-1)
+          end.to change(List, :count).by(-1)
         end
 
         it "destroys associated bookmarks" do
-          list.bookmarks.create!(recipe: recipe, comment: "Great recipe!")
-          expect {
+          list.bookmarks.create!(recipe:, comment: "Great recipe!")
+          expect do
             delete :destroy, params: { id: list.id }
-          }.to change(Bookmark, :count).by(-1)
+          end.to change(Bookmark, :count).by(-1)
         end
       end
     end
@@ -90,4 +91,5 @@ else
       expect(defined?(ListsController)).to eq(true)
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end

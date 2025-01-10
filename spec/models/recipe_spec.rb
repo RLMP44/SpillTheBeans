@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe "recipe", type: :model do
   let(:user) { create(:user) }
   let(:recipe) { create(:recipe, user:) }
@@ -52,3 +53,4 @@ RSpec.describe "recipe", type: :model do
     expect { recipe.destroy }.to raise_error(ActiveRecord::InvalidForeignKey)
   end
 end
+# rubocop:enable Metrics/BlockLength

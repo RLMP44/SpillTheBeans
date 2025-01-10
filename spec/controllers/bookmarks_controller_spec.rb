@@ -5,6 +5,7 @@ rescue LoadError
 end
 
 if defined?(BookmarksController)
+  # rubocop:disable Metrics/BlockLength
   RSpec.describe BookmarksController, type: :controller do
     let(:user) { create(:user) }
     let(:recipe) { create(:recipe, user:) }
@@ -70,4 +71,5 @@ else
       expect(defined?(Bookmarks)).to eq(true)
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end
