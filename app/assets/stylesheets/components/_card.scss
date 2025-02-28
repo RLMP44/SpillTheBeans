@@ -24,11 +24,17 @@
   -ms-transform: translate(-50%, -50%);
 }
 
+.title-container {
+  height: 100%;
+  width: 100%;
+  background-color: $main-white;
+  padding: 1em 2em;
+}
+
 .recipes-container {
   display: grid;
   height: 100%;
   width: 100%;
-  padding: 2rem 1rem;
   grid-template-columns: 30fr 30fr 30fr 30fr;
   gap: 2rem;
 }

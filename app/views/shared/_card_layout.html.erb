@@ -1,21 +1,23 @@
 <!-- app/views/shared/_card_layout.html.erb -->
-<div class="recipes-container main-background-color">
+<div class="title-container">
   <%# ------------------ name of collection --------------------- %>
   <% if defined?(collection_name) && collection_name.present? %>
     <h2><%= collection_name %></h2>
   <% else %>
     <h2><%= t(".#{item_type}") %>s</h2>
   <% end %>
-  <%# ------------------ create cards --------------------- %>
-  <% if collection.exists? %>
-    <% collection.each do |item| %>
-      <%= render partial: "shared/#{item_type}_card", locals: { item_type => item, item: item } %>
+  <div class="recipes-container main-background-color">
+    <%# ------------------ create cards --------------------- %>
+    <% if collection.exists? %>
+      <% collection.each do |item| %>
+        <%= render partial: "shared/#{item_type}_card", locals: { item_type => item, item: item } %>
+      <% end %>
+    <% else %>
+      <h2>No <%= ("#{item_type}") %>s yet!</h2>
     <% end %>
-  <% else %>
-    <h2>No <%= ("#{item_type}") %>s yet!</h2>
-  <% end %>
-  <%# ------------------ prompt message --------------------- %>
-  <% if defined?(prompt) && prompt.present? %>
-    <h2><%= prompt %></h2>
-  <% end %>
+    <%# ------------------ prompt message --------------------- %>
+    <% if defined?(prompt) && prompt.present? %>
+      <h2><%= prompt %></h2>
+    <% end %>
+  </div>
 </div>
