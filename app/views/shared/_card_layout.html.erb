@@ -15,9 +15,9 @@
     <% else %>
       <h2>No <%= ("#{item_type}") %>s yet!</h2>
     <% end %>
-    <%# ------------------ prompt message --------------------- %>
-    <% if defined?(prompt) && prompt.present? %>
-      <h2><%= prompt %></h2>
+    <%# ------------------ handle create buttons --------------------- %>
+    <% if defined?(show_create) && show_create %>
+      <button type="button" class="btn btn-secondary">Create <%= t(".#{item_type}") %></button>
     <% end %>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<%= render partial: 'shared/card_layout', locals: { collection: @user_lists, item_type: 'list', collection_name: 'My Lists', prompt: 'Create a list!' } %>
-<%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', collection_name: 'Other Lists' } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @user_lists, item_type: 'list', collection_name: 'My Lists', show_create: true } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', collection_name: 'Other Lists', show_create: false } %>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
