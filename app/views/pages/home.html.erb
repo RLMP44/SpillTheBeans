@@ -15,5 +15,5 @@
   </div>
   <%#----------------- cards ----------------- %>
   <%= render partial: 'shared/card_layout', locals: { collection: @top_recipes, item_type: 'recipe', collection_name: 'Trending Recipes', show_create: false } %>
-  <%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', collection_name: 'Top Lists', show_create: true } %>
+  <%= render partial: 'shared/card_layout', locals: { collection: @lists, list: @list, item_type: 'list', collection_name: 'Top Lists', show_create: true } %>
 </div>

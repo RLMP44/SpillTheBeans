@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def show
     @recipes = @user.recipes
     @lists = @user.lists
+    @list = List.new
+    @recipe = Recipe.new
   end
 
   private

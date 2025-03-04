@@ -1,26 +1,2 @@
-<%= render partial: 'shared/card_layout', locals: { collection: @user_lists, item_type: 'list', collection_name: 'My Lists', show_create: true } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @user_lists, list: @list, item_type: 'list', collection_name: 'My Lists', show_create: true } %>
 <%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', collection_name: 'Other Lists', show_create: false } %>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new list</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @list do |f| %>
-          <%= f.input :title %>
-          <%#= f.input :photo, as: :file %>
-          <%= f.input :comment %>
-          <%= f.button :submit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Button trigger modal -->
-<button type="button" class="floating-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  +
-</button>

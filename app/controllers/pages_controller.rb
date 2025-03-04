@@ -5,5 +5,6 @@ class PagesController < ApplicationController
     @lists = List.all
     @top_recipes = Recipe.top_recipes
     @recipes = Recipe.all
+    @list = List.new
   end
 end

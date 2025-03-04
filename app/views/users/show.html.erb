@@ -1,4 +1,4 @@
 <h2><%= @user.username %>'s profile</h2>
 
-<%= render partial: 'shared/card_layout', locals: { collection: @recipes, item_type: 'recipe', show_create: true } %>
-<%= render partial: 'shared/card_layout', locals: { collection: @lists, item_type: 'list', show_create: true } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @lists, list: @list, item_type: 'list', show_create: true } %>
+<%= render partial: 'shared/card_layout', locals: { collection: @recipes, recipe: @recipe, item_type: 'recipe', show_create: true } %>
