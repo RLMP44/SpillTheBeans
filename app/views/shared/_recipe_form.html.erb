@@ -1,0 +1,15 @@
+<%= simple_form_for @recipe do |f| %>
+  <%= f.input :name, prompt: "Name of Recipe" %>
+  <%= f.input :description, prompt: "Description" %>
+  <%= f.input :cook_time, prompt: "Cook Time (in min)" %>
+  <%= f.input :difficulty, prompt: "Difficulty (out of 10)" %>
+  <%= f.label :oven, "Does this recipe need an oven?" %>
+  <%= f.select :oven, [['Yes', true], ['No', false]], include_blank: false %>
+  <%= f.input :oven_temp, prompt: "Oven Temperature" %>
+  <%= f.input :total_time, prompt: "Total Time (in min)" %>
+  <%= f.input :ingredients, prompt: "Ingredients (separated by commas)" %>
+  <%= f.input :instructions, prompt: "Instructions" %>
+
+  <%#= f.input :photo, as: :file %>
+  <%= f.button :submit %>
+<% end %>

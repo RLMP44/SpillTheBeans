@@ -26,7 +26,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= render partial: "shared/create_#{item_type}_button", locals: { item_type: item_type, list: (defined?(list) ? list : nil), recipe: (defined?(recipe) ? recipe : nil) } %>
+              <%= render partial: "shared/#{item_type}_form", locals: { item_type: item_type, list: (defined?(list) ? list : nil), recipe: (defined?(recipe) ? recipe : nil) } %>
             </div>
           </div>
         </div>
