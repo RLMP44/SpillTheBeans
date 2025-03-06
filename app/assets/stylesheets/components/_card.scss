@@ -46,6 +46,8 @@ $transition-time: 2.3s;
 body{
   font-family: 'Oswald', sans-serif;
   container-type: inline-size;
+  background-color: $main-white;
+  height: 100vh;
   section{
     width: 90%;
     max-width: 1200px;

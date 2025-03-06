@@ -2,7 +2,7 @@
   <div class="card-body mx-5">
     <div class="recipe-grid">
       <div class="main">
-        <p class="show-title"><%= @recipe.name %></p>
+        <p class="show-title"><%= @recipe.name.titleize %></p>
         <div class="d-flex justify-content-start align-items-center ratings-bar">
           <p><%= @recipe.rating %>★</p>
           <p> | </p>
