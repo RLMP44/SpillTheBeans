@@ -31,9 +31,14 @@
       </div>
       <div class="ingredients-container p-4">
         <h3>Ingredients</h3>
-        <% @recipe.ingredients.each do |ingredient| %>
-          <li><%= ingredient.amount %> <%= ingredient.name %></li>
-        <% end %>
+        <div
+          data-controller="react"
+          data-react-ingredients="<%= @recipe.ingredients.to_json %>"
+        >
+        </div>
+        <%# @recipe.ingredients.each do |ingredient| %>
+          <%# <li>= ingredient.amount = ingredient.name</li> %>
+        <%# end %>
       </div>
     </div>
   </div>
