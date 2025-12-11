@@ -1,4 +1,5 @@
 // Import and register all your controllers from the importmap under controllers/*
+// must register all javascript controllers individually
 
 import { application } from "./application"
 

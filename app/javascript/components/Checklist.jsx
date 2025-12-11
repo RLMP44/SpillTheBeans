@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function Checklist({ ingredients }) {
-  console.log(ingredients)
   return (
     <div className="form-check">
       {ingredients.map((ingredient) => {

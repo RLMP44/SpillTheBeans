@@ -8,8 +8,6 @@ export default class extends Controller {
     const root = createRoot(this.element)
     const ingredientsAsJSON = this.element.dataset.reactIngredients
     const ingredients = JSON.parse(ingredientsAsJSON)
-    console.log('hi')
-    console.log(root)
     root.render(<Checklist ingredients={ingredients} />)
   }
 }
