@@ -17,3 +17,15 @@
     transition: 0.3s;
   }
 }
+
+.form-actions {
+  background-color: $green;
+  justify-self: center;
+  width: -webkit-fill-available;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  &:hover {
+    background-color: $green-shadow;
+    transition: .3s;
+  }
+}
